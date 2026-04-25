@@ -12,31 +12,86 @@
 
     <div class="org-grid">
 
+      <!-- CREATE ORGANIZATION -->
       <div class="org-card">
         <h2>Create Organization</h2>
         <p>For admins managing elections, voters, and candidates.</p>
 
-        <label>Organization Name</label>
-        <input type="text" placeholder="Example: ABC College">
+        <form id="createOrgForm">
 
-        <label>Election Type</label>
-        <input type="text" placeholder="Example: Class Representative">
+          <label>Organization Name</label>
+          <input type="text" id="orgName" placeholder="Example: ABC College" required>
 
-        <button class="main-btn">Create Organization</button>
+          <label>Election Type</label>
+          <input type="text" id="electionType" placeholder="Example: Class Representative" required>
+
+          <button class="main-btn" id="createOrgBtn" type="submit">
+            Create Organization
+          </button>
+
+        </form>
       </div>
 
+      <!-- JOIN ORGANIZATION -->
       <div class="org-card">
         <h2>Join Organization</h2>
         <p>For students joining an existing voting organization.</p>
 
-        <label>Organization Code</label>
-        <input type="text" placeholder="Example: CR-ELECTION-2026">
+        <form id="joinOrgForm">
 
-        <button class="main-btn">Join Organization</button>
+          <label>Organization Code</label>
+          <input type="text" id="orgCode" placeholder="Example: CR-ELECTION-2026" required>
+
+          <button class="main-btn" id="joinOrgBtn" type="submit">
+            Join Organization
+          </button>
+
+        </form>
       </div>
 
     </div>
   </div>
+
+  <!-- SCRIPT -->
+  <script>
+
+    // CREATE ORG
+    document.getElementById("createOrgForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const orgName = document.getElementById("orgName").value;
+      const electionType = document.getElementById("electionType").value;
+
+      if (!orgName || !electionType) {
+        alert("Fill all fields");
+        return;
+      }
+
+      console.log("Creating Organization:", orgName, electionType);
+
+      // TEMP REDIRECT / SUCCESS
+      alert("Organization Created Successfully");
+    });
+
+
+    // JOIN ORG
+    document.getElementById("joinOrgForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const orgCode = document.getElementById("orgCode").value;
+
+      if (!orgCode) {
+        alert("Enter organization code");
+        return;
+      }
+
+      console.log("Joining Organization:", orgCode);
+
+      // TEMP REDIRECT / SUCCESS
+      alert("Joined Organization Successfully");
+    });
+
+  </script>
 
 </body>
 </html>
